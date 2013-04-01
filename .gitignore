@@ -1,0 +1,5 @@
+# Archived files
+*.zip
+# Exported Processing Applications
+application.*/
+applet/
