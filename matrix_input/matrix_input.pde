@@ -4,6 +4,7 @@ float column_width;
 float row_height;
 float padding = 6;
 color background_color = color( 255 );
+DataGrid data;
 
 void setup()
 {
