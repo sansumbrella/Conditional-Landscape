@@ -14,6 +14,8 @@ void setup()
   noFill();
   stroke( 0 );
   smooth();
+  
+  data = new DataGrid("../../shared_data/");
 }
 
 void draw()
