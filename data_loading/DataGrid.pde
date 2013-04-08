@@ -6,10 +6,20 @@ class DataGrid
   DataGrid( String filename )
   {
     values = new ArrayList<String>();
-    
+    String[] lines = loadStrings( filename );
+    rows = lines.length;
+    for( String line : lines )
+    {
+      String[] elements = split( line, ',' );
+      columns = max( columns, elements.length );
+      for( String e : elements )
+      {
+        values.add( e );
+      }
+    }
   }
   
-  String getValue(int x, int y)
+  String getValueString(int x, int y)
   {
      if( x < columns && y < rows )
      {
@@ -17,4 +27,9 @@ class DataGrid
      } 
      return "";
   }
-}
+  
+  float getValue( int x, int y )
+  {
+    return float( getValueString( x, y ) );
+  }
+};

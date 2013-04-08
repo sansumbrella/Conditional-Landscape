@@ -14,8 +14,8 @@ void setup()
   noFill();
   stroke( 0 );
   smooth();
-  
-  data = new DataGrid("../../shared_data/");
+
+  data = new DataGrid("../../shared_data/fake_data.csv");
 }
 
 void draw()
@@ -40,59 +40,13 @@ void draw()
 // all drawing starts relative to the cell's top-left corner
 void renderCell( int x_index, int y_index, float w, float h )
 {
-  //  line( w/2, h/2, w, h );
-  //  rect( 0, 0, w/2, h/2 );
-//  stroke( 255, 127, 0 );
-  renderRotation( x_index, y_index, w, h );
-  //  stroke( 127, 0, 255 );
-//  renderNoiseCell( x_index, y_index, w, h );
-//  renderRectangles( x_index, y_index, w, h );
-}
-
-void renderRectangles( int x_index, int y_index, float w, float h )
-{
   rectMode( CENTER );
-  int maxRects = (int)map( x_index, 0, columns, 2, 10 );
-  maxRects = max( maxRects, (int)map( y_index, 0, rows, 2, 10 ) );
-  
-  for ( int i = 0; i < maxRects; ++i )
-  {
-    float x_size = map( i, 0, maxRects - 1, w * 0.1, w * 0.9 );
-    float y_size = map( i, 0, maxRects - 1, h * 0.1, h * 0.9 );
-    rect( w / 2, h / 2, x_size, y_size );
-  }
-  rectMode( CORNER );
-}
-
-void renderRotation( int x_index, int y_index, float w, float h )
-{
-  float mouse_x_modifier = mouseX * 1.0 / width;
-  float mouse_y_modifier = mouseY * 1.0 / width;
-  float y_adjust = 4 * PI * (y_index + 1) / rows;
-  float x_adjust = 4 * PI * (x_index + 1) / columns;
-  float theta = x_adjust * mouse_x_modifier + y_adjust * mouse_y_modifier;
-
-  // move to center of cell 
+  pushMatrix();
   translate( w/2, h/2 );
-  // draw a circle
-  ellipse( 0, 0, 4, 4 );
-  rotate( theta );
-  // and a line
-  line( 0, 0, w/2, h/2 );
-}
-
-void renderNoiseCell( int x_index, int y_index, float w, float h )
-{
-  float x = x_index * 0.05 + millis() * 0.001;
-  float y = y_index * 0.05 + millis() * 0.0005; 
-  float theta = noise( x, y ) * TWO_PI;
-
-  // move to center of cell 
-  translate( w/2, h/2 );
-  // draw a circle
-  ellipse( 0, 0, 4, 4 );
-  rotate( theta );
-  // and a line
-  line( 0, 0, w/2, h/2 );
+  // convert data from its range (0, 1) to new range (0.1, 1.0)
+  float size = map( data.getValue( x_index, y_index ), 0.0, 1.0, 0.1, 1.0 );
+  scale( size );
+  rect( 0, 0, w, h );
+  popMatrix();
 }
 
