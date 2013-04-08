@@ -40,13 +40,9 @@ void draw()
 // all drawing starts relative to the cell's top-left corner
 void renderCell( int x_index, int y_index, float w, float h )
 {
-  rectMode( CENTER );
-  pushMatrix();
-  translate( w/2, h/2 );
   // convert data from its range (0, 1) to new range (0.1, 1.0)
   float size = map( data.getValue( x_index, y_index ), 0.0, 1.0, 0.1, 1.0 );
-  scale( size );
-  rect( 0, 0, w, h );
-  popMatrix();
+  float diameter = w * size;
+  ellipse( w/2, h/2, diameter, diameter );
 }
 
