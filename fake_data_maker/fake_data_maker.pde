@@ -1,7 +1,7 @@
 // Random data generator
 
-int rows = 40;
-int columns = 30;
+int rows = 80;
+int columns = 80;
 
 String[] lines = new String[rows];
 
