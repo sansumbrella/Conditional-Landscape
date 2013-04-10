@@ -16,6 +16,9 @@ Shape Loading sketches:
 02 - centers the shape in the window
 03 - adds rotation and interactivity to the shape
 
+Region Drawing sketches:
+More ideas for drawing in a grid, without using a data file
+
 Fake Data Maker:
 - makes fake data for the data loading sketches (since you need something to test with)
 
