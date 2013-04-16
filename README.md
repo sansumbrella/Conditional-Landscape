@@ -79,8 +79,6 @@ IV. Individual time to work (we ran out of time at this point, and just took que
   - translate rules into code, let computer perform rules
 
 All code in this repository is available under the Modified BSD License.
-You can do pretty much what you like with it, so long as you don't blame me.
-
 
 Copyright (c) 2013, David Wicks
 All rights reserved.
