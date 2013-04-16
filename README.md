@@ -5,9 +5,9 @@ Processing sketches for a workshop given at Harvard GSD's Landscape Architecture
 Workshop led by David Wicks, invited by Rosetta Elkin and Jill Desimini.
 
 For more information on Processing, see:
-http://processing.org
-http://processing.org/reference
-http://processing.org/learning/
+[Processing.org](http://processing.org)
+[Processing Reference](http://processing.org/reference)
+[Processing Tutorials](http://processing.org/learning/)
 
 Sketch overview:
 
