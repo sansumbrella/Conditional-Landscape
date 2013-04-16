@@ -4,7 +4,17 @@ Conditional-Landscape
 Processing sketches for a workshop given at Harvard GSD's Landscape Architecture program.
 Workshop led by David Wicks, invited by Rosetta Elkin and Jill Desimini.
 
+For more information on Processing, see:
+http://processing.org
+http://processing.org/reference
+http://processing.org/learning/
+
 Sketch overview:
+
+Branching:
+Created during the workshop; annotated after the fact
+Branching_alt:
+A simpler branching sketch, easy to understand but harder to build upon.
 
 Data Loading sketches:
 01 - loads data from CSV and gets information out of it to render on a grid

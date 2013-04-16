@@ -1,66 +1,42 @@
-Branch branch;
+/**
+ Demonstrates branching through recursion.
+ Also shows rudimentary animation and defining custom types.
+ */
+
+// The name of our Branch is "tree"
+Branch tree;
+// These variables determine how branches grow
+float startBranchLength = 500;
+float minBranchLength = 10;
+float childProportion = 0.66;
 
 void setup()
-{
+{ // set the window size
   size(800, 600);
-  branch = new Branch( width/2, height/2, 300 );
-  branch.growthAngle = -PI/2;
+  // create a new branch
+  tree = new Branch( width/2, height, startBranchLength, PI * 0.2 );
+  tree.setGrowthAngle( -PI/2 );
+  
+  // set drawing properties
+  strokeWeight( 1 );
+  stroke( 0 );
+  smooth();
 }
 
 void draw()
-{
+{ // start with a white page
   background( 255 );
-  // draw first branch
-  branch.draw();
-  branch.growthAngle = map( mouseX, 0, width, 0, TWO_PI );
+  // tell our branches to grow
+  tree.grow();
+  // draw first branch, which will draw all child branches, too
+  tree.draw();
 }
 
 void mousePressed()
-{
-  branch = new Branch( width/2, height/2, 300 );
-}
-
-class Branch
-{
-  float startX, startY;
-  float length;
-  float currentLength;
-  float growthAngle;
-  Branch child;
-  Branch( float sx, float sy, float length )
-  {
-    startX = sx;
-    startY = sy;
-    this.length = length;
-    currentLength = 0;
-
-    if( random(1.0) < 0.5 )
-    {
-      growthAngle = -PI * 0.2;      
-    }
-    else
-    {
-      growthAngle = PI * 0.2;
-    }
-    
-    
-    if( length > 10 )
-    {
-      
-      child = new Branch( length / 3, 0, length * 0.66  );
-    }
-  }
-  
-  void draw()
-  {
-    currentLength += (length - currentLength) * 0.05;
-    translate( startX, startY );
-    rotate( growthAngle );
-    line( 0, 0, currentLength, 0 );
-    if( child != null )
-    {
-      child.draw();
-    }
-  }
+{ // create a new branch
+  // angle of branching determined by mouse position
+  float growthAngle = map( mouseX, 0, width, PI * 0.01, PI * 0.5 );
+  tree = new Branch( width/2, height, startBranchLength, growthAngle );
+  tree.setGrowthAngle( -PI/2 );
 }
 
